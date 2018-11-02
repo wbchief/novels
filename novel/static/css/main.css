@@ -1,0 +1,13 @@
+body {
+    background-color: rgb(245, 245, 245) !important;
+}
+
+#content1{
+    font-family: 方正启体简体, "Microsoft YaHei", 微软雅黑, 宋体;
+    font-size: 19pt;
+    letter-spacing: 0.2em;
+    line-height: 150%;
+    padding-top: 15px;
+    width: 85%;
+    margin: auto;
+}
