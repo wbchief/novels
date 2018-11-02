@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+
+{% block content %}
+<div class="container">
+    <h3 class="col-md-5 col-md-offset-5">搜索</h3>
+        <div class="col-md-7 col-md-offset-2">
+            {{ wtf.quick_form(form) }}
+        </div>
+
+</div>
+
+<div class="container">
+    <table table table-striped>
+        {% for data in datas %}
+            <tr>
+                <td>{{ data.get('book_name') }}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+</div>
+{% endblock %}
+
+<script type="text/javascript">
+    $(function(){
+        alert('12')
+        $('.btn).click(function(){
+            $.ajax({
+                url: "{{ url_for('main.result', search=form.name) }}",
+                type: 'POST',
+                dataType: 'json'
+            }).done(function(datas){
+                    })
+</script>

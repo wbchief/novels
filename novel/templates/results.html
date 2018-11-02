@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}搜索结果{% endblock %}
+
+
+{% block nav %}
+<div class="nav navbar-nav">
+    <a class="navbar-brand" href="{{ url_for('main.index') }}">搜索页面</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<h4 class="col-md-5 col-md-offset-5">{{ search }} 的搜索结果</h4>
+<div class="container">
+
+        <table class="table table-bordered">
+            <tr align="center" style="height:30px;">
+                <th width="20%">书籍名称</th>
+                <th width="15%">作者</th>
+                <th width="35%">最新章节</th>
+                <th width="9%">字数</th>
+                <th width="15%">最后更新</th>
+                <th width="6%">状态</th>
+            </tr>
+                {% for data in datas %}
+                    <tr>
+                        <td><a href="{{ url_for('main.book', book_id=data.get('book_id')) }}">{{ data.get('book_name') }}</a></td>
+                        <td>{{ data.get('author') }}</td>
+                        <td><a href="{{ url_for('main.content', book_id=data.book_id, chapter_number=0) }}">{{ data.get('new_chapter') }}</a></td>
+                        <td>{{ data.get('font') }}</td>
+                        <td>{{ data.get('time') }}</td>
+                        <td>{{ data.get('statu') }}</td>
+                    </tr>
+                {% endfor %}
+
+         </table>
+</div>
+
+{% endblock %}

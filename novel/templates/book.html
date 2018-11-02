@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}搜索结果{% endblock %}
+
+
+{% block nav %}
+<div class="nav navbar-nav">
+    <a class="navbar-brand" href="{{ url_for('main.index') }}">搜索页面</a>
+</div>
+{% endblock %}
+
+
+{% block content %}
+{% if not book %}
+    <h4>你要找的书籍好像不存在哦</h4>
+{% endif %}
+<div class="container">
+
+    <div>
+        <table>
+            <tr>
+                <td class="col-md-2">
+                    <img class="img" src="{{ book.image.decode('utf-8') }}">
+                </td>
+                <td>
+                    <p>{{ book.book_name }}</b></p>
+                    <p><b>作者:</b> {{ book.author }}</p>
+                    <p><b>最近更新:</b> {{ book.last_update }}</p>
+                    <p><b>简介:</b> {{ book.about_book }}</p>
+                </td>
+            </tr>
+         </table>
+    </div>
+
+    <br>
+    <br>
+
+
+    <div>
+        <table style="border-collapse:separate; border-spacing:0px 10px;">
+            {% if chapters %}
+            {% for chapter in chapters %}
+                <tr>
+                {% for i in range(chapter | length) %}
+                     <td class="col-md-2 "><a href="{{ url_for('main.content', book_id=chapter[i].book_id , chapter_number = chapter[i].chapter_number) }}">{{ chapter[i].chapter_name }}</a> </td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </table>
+    </div>
+</div>
+{% endblock %}

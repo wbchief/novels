@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %} 小说 {% endblock %}
+
+{% block nav %}
+<div class="nav navbar-nav">
+    <a class="navbar-brand" href="{{ url_for('main.index') }}">搜索页面</a>
+</div>
+<div class="nav navbar-nav">
+    <a class="navbar-brand" href="{{ url_for('main.book', book_id=chapter.book_id) }}">目录</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h3 align="center">{{ chapter.chapter_name }}</h3>
+    <br>
+    <br>
+    <div>
+            {{ content.content | safe}}
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block chapter %}
+<div class="container">
+    {% if chapter.chapter_number == 1 %}
+    <a class="col-md-4" href="{{ url_for('main.book', book_id=chapter.book_id) }}">上一章</a>
+    {% elif chapter.chapter_number == 0 %}
+    <a class="col-md-4" href="{{ url_for('main.book', book_id=chapter.book_id) }}">上一章</a>
+    {% else %}
+    <a class="col-md-4" href="{{ url_for('main.content', book_id=chapter.book_id, chapter_number=chapter.chapter_number-1) }}">上一章</a>
+    {% endif %}
+
+    <a class="col-md-4" href="{{ url_for('main.book', book_id=chapter.book_id) }}">目录</a>
+
+    {% if chapter.chapter_number == count %}
+    <a class="col-md-4" href="{{ url_for('main.book', book_id=chapter.book_id) }}">下一章</a>
+    {% else %}
+    <a class="col-md-4" href="{{ url_for('main.content', book_id=chapter.book_id, chapter_number=chapter.chapter_number+1) }}">下一章</a>
+    {% endif %}
+    <br>
+    <br>
+</div>
+{% endblock %}

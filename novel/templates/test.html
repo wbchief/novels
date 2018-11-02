@@ -1,0 +1,16 @@
+<div>
+        <link href="{{ url_for('static', filename='css/main.css') }}" type="text/css" rel="stylesheet">
+
+        <table style="border-collapse:separate; border-spacing:0px 10px;">
+            {% if chapters %}
+            {% for chapter in chapters %}
+                <tr>
+                    <td class="col-md-2 "><a href="{{ url_for('main.content', chapter_id=chapter[0].id) }}">{{ chapter[0].chapter_name }}</a> </td>
+                    <td class="col-md-2 col-md-offset-2"><a href="{{ url_for('main.content', chapter_id=chapter[1].id) }}">{{ chapter[1].chapter_name }}</a> </td>
+                    <td class="col-md-2 col-md-offset-2"><a href="{{ url_for('main.content', chapter_id=chapter[2].id) }}">{{ chapter[2].chapter_name }}</a> </td>
+                    <td class="col-md-2 col-md-offset-2"><a href="{{ url_for('main.content', chapter_id=chapter[3].id) }}">{{ chapter[3].chapter_name }}</a> </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </table>
+    </div>
