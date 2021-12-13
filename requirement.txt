@@ -59,7 +59,7 @@ language-selector==0.1
 lazy-object-proxy==1.3.1
 logger==1.4
 louis==2.6.4
-lxml==3.5.0
+lxml==4.6.5
 macholib==1.11
 Mako==1.0.7
 Markdown==2.6.11
