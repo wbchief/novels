@@ -115,7 +115,7 @@ six==1.11.0
 SQLAlchemy==1.2.7
 system-service==0.3
 tqdm==4.25.0
-Twisted==18.7.0
+Twisted==22.1.0
 ubuntu-drivers-common==0.0.0
 ufw==0.35
 unattended-upgrades==0.1
